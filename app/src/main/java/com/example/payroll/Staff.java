@@ -1,12 +1,10 @@
 package com.example.payroll;
 
-import android.text.Editable;
-
 public class Staff {
     private String name;
-    private Editable salary;
+    private String salary;
 
-    public Staff(String name, Editable salary) {
+    public Staff(String name, String salary) {
         this.name = name;
         this.salary = salary;
     }
@@ -19,11 +17,11 @@ public class Staff {
         this.name = name;
     }
 
-    public Editable getSalary() {
+    public String getSalary() {
         return salary;
     }
 
-    public void setSalary(Editable salary) {
+    public void setSalary(String salary) {
         this.salary = salary;
     }
 }

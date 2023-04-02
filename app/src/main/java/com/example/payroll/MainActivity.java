@@ -3,7 +3,6 @@ package com.example.payroll;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.text.Editable;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -19,10 +18,11 @@ public class MainActivity extends AppCompatActivity {
     ListView listStaff;
 
     String name;
-    Editable crossSalary ;
+    String crossSalary ;
 
     ArrayList<Staff> arrayList = new ArrayList<>();
     Adapter adapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,17 +43,16 @@ public class MainActivity extends AppCompatActivity {
                 name = String.valueOf(etName.getText());
 
                 //Add công thức tính net
-                crossSalary = etSalary.getText();
+                crossSalary = String.valueOf(etSalary.getText());
 
-                arrayList.add(new Staff(name, crossSalary));
+                Staff staff = new Staff(name, crossSalary);
+                arrayList.add(staff);
+
+                adapter = new Adapter(MainActivity.this, R.layout.item_listview, arrayList);
+                listStaff.setAdapter(adapter);
                 adapter.notifyDataSetChanged();
 
             }
         });
-
-        adapter = new Adapter(MainActivity.this, R.layout.item_listview, arrayList);
-        listStaff.setAdapter(adapter);
-
-
     }
 }
